@@ -1,0 +1,39 @@
+﻿<Window x:Class="rgu_key_guard.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:rgu_key_guard"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <TextBox Text="{Binding UI_KeyID, UpdateSourceTrigger=PropertyChanged}"
+                 Keyboard.KeyDown="TextBox_KeyDown"
+                 
+                 Grid.Row="0"
+                 Grid.Column="0"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Center" />
+        <Button Content="Get key"
+                Click="Button_Click"
+                
+                Grid.Row="0"
+                Grid.Column="1"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"/>
+        <TextBlock Text="{Binding UI_LoadedKey, UpdateSourceTrigger=PropertyChanged}" 
+                   
+                   Grid.Row="1"
+                   Grid.ColumnSpan="2"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"/>
+    </Grid>
+</Window>
