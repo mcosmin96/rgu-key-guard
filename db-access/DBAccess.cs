@@ -1,37 +1,33 @@
-﻿using models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Collections.Specialized;
+
 
 namespace db_access
 {
     //This class will be used by the Manager to make calls to the database so it should be populated only by functions the Manager needs to know about
-    public static class DBAccess
+    public class DBAccess
     {
-        //Pull all keys from database operation (currently returning a mock key array)
-        public static Key[] GetKeys()
+        SqlConnection dbConnection;
+        public SqlConnection getConnection()
         {
-            return new Key[]
+            if (dbConnection == null)
             {
-                new Key()
-                {
-                    Code = "K_0120",
-                    Type = KeyType.Key
-                },
-                new Key()
-                {
-                    Code = "K_0121",
-                    Type = KeyType.Key
-                },
-                new Key()
-                {
-                    Code = "K_0122",
-                    Type = KeyType.Key
-                },
-            };
+                dbConnection = new SqlConnection(getConnectionSB().ConnectionString);
+            }
+            return dbConnection;
+        }
+
+        //Pull all keys from database operation (currently returning a mock key array)
+        private SqlConnectionStringBuilder getConnectionSB()
+        {
+            var cb = new SqlConnectionStringBuilder();
+            cb.DataSource = ConfigurationManager.AppSettings["DB_SOURCE"];
+            cb.UserID = ConfigurationManager.AppSettings["DB_USER_ID"];
+            cb.Password = ConfigurationManager.AppSettings["DB_PASSWORD"];
+            cb.InitialCatalog = ConfigurationManager.AppSettings["DB_NAME"];
+            return cb;
         }
     }
 }

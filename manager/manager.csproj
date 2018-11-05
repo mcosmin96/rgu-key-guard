@@ -42,15 +42,13 @@
   <ItemGroup>
     <Compile Include="Manager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="utils\Date.cs" />
+    <Compile Include="utils\InfoClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\db-access\db-access.csproj">
       <Project>{3B9D8319-64A4-45AC-8B00-F1F1EB72988A}</Project>
       <Name>db-access</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\models\models.csproj">
-      <Project>{EE7D17DA-EB53-4E6C-8033-B4BD2F761215}</Project>
-      <Name>models</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

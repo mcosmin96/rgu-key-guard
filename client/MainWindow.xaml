@@ -28,7 +28,7 @@
                 Grid.Row="0"
                 Grid.Column="1"
                 VerticalAlignment="Center"
-                HorizontalAlignment="Center"/>
+                HorizontalAlignment="Center" Margin="170.2,99,183.6,91.6"/>
         <TextBlock Text="{Binding UI_LoadedKey, UpdateSourceTrigger=PropertyChanged}" 
                    
                    Grid.Row="1"

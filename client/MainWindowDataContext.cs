@@ -13,8 +13,9 @@ namespace rgu_key_guard
     {
         public MainWindowDataContext()
         {
-            Console.WriteLine();
+            Console.WriteLine("Strating app");
             UI_KeyID = 1;
+            
             UI_LoadedKey = "No key loaded.";
         }
 
@@ -49,14 +50,11 @@ namespace rgu_key_guard
 
         internal void OnGetKeyButtonPressed()
         {
-            try
-            {
-                UI_LoadedKey = Manager.GetKey(UI_KeyID).Code;
-            }
-            catch
-            {
-                UI_LoadedKey = "Error occured.";
-            }
+            Manager manager = new Manager();
+            Key_Type key_Type = new Key_Type();
+            key_Type.keyType = "Une";
+            manager.insert(key_Type);
+            manager.selectAll(key_Type);
         }
 
         public void OnPropertyChanged(string propertyName)
